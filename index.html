@@ -1,0 +1,235 @@
+<!-- HTML -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ElectroTech - Tienda Online</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-success bg-dark">
+        <a class="navbar-brand" href="#">ElectroTech</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="productos.html">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#lista-carrito">Carrito</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container mt-4">
+        <!-- Contenido de la tienda -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Nuestros Productos</h2>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <img src="img/pexels-gül-işık-2194391.jpg" class="card-img-top img-fluid" alt="Producto 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Producto X</h5>
+                        <p class="card-text">Descripción del producto X.</p>
+                        <button class="btn btn-dark btn-agregar-carrito"
+                            onclick="agregarAlCarrito('Producto X', 19.99, 1)">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <img src="img/pexels-jessica-lewis-593332.jpg" class="card-img-top img-fluid" alt="Producto 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Producto Y</h5>
+                        <p class="card-text">Descripción del producto Y.</p>
+                        <button class="btn btn-dark btn-agregar-carrito"
+                            onclick="agregarAlCarrito('Producto Y', 24.99, 1)">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <img src="img/pexels-kristina-paukshtite-712880.jpg" class="card-img-top img-fluid"
+                        alt="Producto 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Producto Z</h5>
+                        <p class="card-text">Descripción del producto Z.</p>
+                        <button class="btn btn-dark btn-agregar-carrito"
+                            onclick="agregarAlCarrito('Producto Z', 29.99, 1)">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <img src="img/pexels-pixabay-50676.jpg" class="card-img-top img-fluid" alt="Producto 4">
+                    <div class="card-body">
+                        <h5 class="card-title">Producto W</h5>
+                        <p class="card-text">Descripción del producto W.</p>
+                        <button class="btn btn-dark btn-agregar-carrito"
+                            onclick="agregarAlCarrito('Producto W', 39.99, 1)">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Botón ver más productos -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <a href="productos.html" class="btn btn-secondary">Ver más productos</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección del Carrito -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Tu Carrito de Compras</h2>
+                <!-- Desplegable de Productos -->
+                <div class="form-group">
+                    <label for="productos">Seleccione un Producto:</label>
+                    <select class="form-control" id="productos">
+                        <option value="productoX">Producto X</option>
+                        <option value="productoY">Producto Y</option>
+                        <option value="productoZ">Producto Z</option>
+                        <option value="productoW">Producto W</option>
+                        <!-- Aquí se pueden agregar más productos -->
+                    </select>
+                </div>
+
+                <!-- Botón para agregar a la tabla desde el desplegable -->
+                <button type="button" class="btn btn-dark m-1" onclick="agregarDesdeDesplegable()">Agregar a la
+                    lista</button>
+                <ul id="lista-carrito" class="list-group m-2">
+                    <!-- Aquí se mostrarán los productos del carrito -->
+                </ul>
+
+                <!-- Formulario para el carrito -->
+                <div class="form-group">
+                    <label for="nombreCliente">Nombre del Cliente:</label>
+                    <input type="text" class="form-control" id="nombreCliente" placeholder="Ingrese su nombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="rutCliente">RUT del Cliente (opcional):</label>
+                    <input type="text" class="form-control" id="rutCliente" placeholder="Ingrese su RUT">
+                </div>
+
+                <!-- Tabla de Productos -->
+                <table class="table mt-4">
+                    <thead>
+                        <tr>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaProductos">
+                        <!-- Aquí se agregarán los productos que se seleccionaron -->
+                    </tbody>
+                </table>
+
+                <!-- Precio Final de la Compra -->
+                <div class="mt-4">
+                    <h4>Precio Final: <span id="precioFinal">$0.00</span></h4>
+                </div>
+                <!-- Formulario para el carrito -->
+                <div class="form-group">
+                    <label for="nombreCliente">Nombre del Cliente:</label>
+                    <input type="text" class="form-control" id="nombreCliente" placeholder="Ingrese su nombre">
+                </div>
+
+                <!-- RUT del Cliente -->
+                <div class="form-group">
+                    <label for="rutCliente">RUT del Cliente:</label>
+                    <input type="text" class="form-control" id="rutCliente" placeholder="Ingrese su RUT">
+                </div>
+
+                <!-- Botón para finalizar compra con estilos de Bootstrap -->
+                <button type="button" class="btn btn-success mt-3" data-toggle="modal"
+                    data-target="#finalizarCompraModal">Finalizar Compra</button>
+
+                <!-- Modal de confirmación de compra -->
+                <div class="modal fade" id="finalizarCompraModal" tabindex="-1" role="dialog"
+                    aria-labelledby="finalizarCompraModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="finalizarCompraModalLabel">Confirmar Compra</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>¿Está seguro de que desea finalizar la compra?</p>
+                                <!-- Aquí puedes mostrar la información del cliente y productos si lo deseas -->
+                                <p id="infoCliente"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success"
+                                    onclick="finalizarCompraConAlerta()">Finalizar Compra</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Función para finalizar compra con alerta de Bootstrap -->
+    <script>
+        function finalizarCompraConAlerta() {
+            // Obtener datos del cliente
+            const nombreCliente = document.getElementById('nombreCliente').value.trim();
+            const rutCliente = document.getElementById('rutCliente').value.trim();
+
+            // Determinar si es CONSUMIDOR FINAL
+            const tipoCliente = nombreCliente || rutCliente ? 'CLIENTE' : 'CONSUMIDOR FINAL';
+
+            // Construir la información del cliente
+            const infoCliente = tipoCliente === 'CONSUMIDOR FINAL' ? tipoCliente : `Cliente: ${nombreCliente}, RUT: ${rutCliente}`;
+
+            // Mostrar alerta de Bootstrap
+            alert(`¡Compra finalizada con éxito!\n${infoCliente}`);
+
+            // Puedes personalizar la alerta de Bootstrap según tus necesidades
+        }
+    </script>
+
+
+    <!-- Pie de página -->
+    <footer class="bg-dark text-light text-center py-3 mt-5">
+        © 2023 ElectroTech - Todos los derechos reservados
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/carrito.js"></script>
+
+</body>
+
+</html>
